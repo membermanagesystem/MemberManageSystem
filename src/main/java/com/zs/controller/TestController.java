@@ -11,7 +11,7 @@ public class TestController {
 	@RequestMapping("/hello")
 	@ResponseBody
 	public String Hello() {
-		return "hello";
+		return "zou hello";
 	}
 	
 }
