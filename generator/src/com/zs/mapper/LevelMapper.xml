@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zs.dao.LevelMapper" >
+  <resultMap id="BaseResultMap" type="com.zs.model.Level" >
+    <id column="Level_Id" property="levelId" jdbcType="INTEGER" />
+    <result column="Leval_Name" property="levalName" jdbcType="VARCHAR" />
+    <result column="Leval_Discount" property="levalDiscount" jdbcType="DOUBLE" />
+    <result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="Operation" property="operation" jdbcType="VARCHAR" />
+    <result column="Operation_Date" property="operationDate" jdbcType="TIMESTAMP" />
+    <result column="Operation_Ip" property="operationIp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Level_Id, Leval_Name, Leval_Discount, Remarks, Operation, Operation_Date, Operation_Ip
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_level_info
+    where Level_Id = #{levelId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_level_info
+    where Level_Id = #{levelId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zs.model.Level" >
+    insert into tbl_level_info (Level_Id, Leval_Name, Leval_Discount, 
+      Remarks, Operation, Operation_Date, 
+      Operation_Ip)
+    values (#{levelId,jdbcType=INTEGER}, #{levalName,jdbcType=VARCHAR}, #{levalDiscount,jdbcType=DOUBLE}, 
+      #{remarks,jdbcType=VARCHAR}, #{operation,jdbcType=VARCHAR}, #{operationDate,jdbcType=TIMESTAMP}, 
+      #{operationIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zs.model.Level" >
+    insert into tbl_level_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="levelId != null" >
+        Level_Id,
+      </if>
+      <if test="levalName != null" >
+        Leval_Name,
+      </if>
+      <if test="levalDiscount != null" >
+        Leval_Discount,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+      <if test="operation != null" >
+        Operation,
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date,
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="levelId != null" >
+        #{levelId,jdbcType=INTEGER},
+      </if>
+      <if test="levalName != null" >
+        #{levalName,jdbcType=VARCHAR},
+      </if>
+      <if test="levalDiscount != null" >
+        #{levalDiscount,jdbcType=DOUBLE},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zs.model.Level" >
+    update tbl_level_info
+    <set >
+      <if test="levalName != null" >
+        Leval_Name = #{levalName,jdbcType=VARCHAR},
+      </if>
+      <if test="levalDiscount != null" >
+        Leval_Discount = #{levalDiscount,jdbcType=DOUBLE},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        Operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip = #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Level_Id = #{levelId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zs.model.Level" >
+    update tbl_level_info
+    set Leval_Name = #{levalName,jdbcType=VARCHAR},
+      Leval_Discount = #{levalDiscount,jdbcType=DOUBLE},
+      Remarks = #{remarks,jdbcType=VARCHAR},
+      Operation = #{operation,jdbcType=VARCHAR},
+      Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      Operation_Ip = #{operationIp,jdbcType=VARCHAR}
+    where Level_Id = #{levelId,jdbcType=INTEGER}
+  </update>
+</mapper>

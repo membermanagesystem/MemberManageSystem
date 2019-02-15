@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zs.dao.EmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.zs.model.Employee" >
+    <id column="Employee_Id" property="employeeId" jdbcType="INTEGER" />
+    <result column="Position_Id" property="positionId" jdbcType="INTEGER" />
+    <result column="Department_Id" property="departmentId" jdbcType="INTEGER" />
+    <result column="Shop_Id" property="shopId" jdbcType="INTEGER" />
+    <result column="Employee_Name" property="employeeName" jdbcType="VARCHAR" />
+    <result column="Employee_Gender" property="employeeGender" jdbcType="INTEGER" />
+    <result column="Employee_Email" property="employeeEmail" jdbcType="VARCHAR" />
+    <result column="Employee_Password" property="employeePassword" jdbcType="VARCHAR" />
+    <result column="Employee_Phone" property="employeePhone" jdbcType="VARCHAR" />
+    <result column="Employee_Image" property="employeeImage" jdbcType="VARCHAR" />
+    <result column="Employee_Status" property="employeeStatus" jdbcType="INTEGER" />
+    <result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="Operation" property="operation" jdbcType="VARCHAR" />
+    <result column="Operation_Date" property="operationDate" jdbcType="TIMESTAMP" />
+    <result column="Operation_Ip" property="operationIp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Employee_Id, Position_Id, Department_Id, Shop_Id, Employee_Name, Employee_Gender, 
+    Employee_Email, Employee_Password, Employee_Phone, Employee_Image, Employee_Status, 
+    Remarks, Operation, Operation_Date, Operation_Ip
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_employee_info
+    where Employee_Id = #{employeeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_employee_info
+    where Employee_Id = #{employeeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zs.model.Employee" >
+    insert into tbl_employee_info (Employee_Id, Position_Id, Department_Id, 
+      Shop_Id, Employee_Name, Employee_Gender, 
+      Employee_Email, Employee_Password, Employee_Phone, 
+      Employee_Image, Employee_Status, Remarks, 
+      Operation, Operation_Date, Operation_Ip
+      )
+    values (#{employeeId,jdbcType=INTEGER}, #{positionId,jdbcType=INTEGER}, #{departmentId,jdbcType=INTEGER}, 
+      #{shopId,jdbcType=INTEGER}, #{employeeName,jdbcType=VARCHAR}, #{employeeGender,jdbcType=INTEGER}, 
+      #{employeeEmail,jdbcType=VARCHAR}, #{employeePassword,jdbcType=VARCHAR}, #{employeePhone,jdbcType=VARCHAR}, 
+      #{employeeImage,jdbcType=VARCHAR}, #{employeeStatus,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, 
+      #{operation,jdbcType=VARCHAR}, #{operationDate,jdbcType=TIMESTAMP}, #{operationIp,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zs.model.Employee" >
+    insert into tbl_employee_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="employeeId != null" >
+        Employee_Id,
+      </if>
+      <if test="positionId != null" >
+        Position_Id,
+      </if>
+      <if test="departmentId != null" >
+        Department_Id,
+      </if>
+      <if test="shopId != null" >
+        Shop_Id,
+      </if>
+      <if test="employeeName != null" >
+        Employee_Name,
+      </if>
+      <if test="employeeGender != null" >
+        Employee_Gender,
+      </if>
+      <if test="employeeEmail != null" >
+        Employee_Email,
+      </if>
+      <if test="employeePassword != null" >
+        Employee_Password,
+      </if>
+      <if test="employeePhone != null" >
+        Employee_Phone,
+      </if>
+      <if test="employeeImage != null" >
+        Employee_Image,
+      </if>
+      <if test="employeeStatus != null" >
+        Employee_Status,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+      <if test="operation != null" >
+        Operation,
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date,
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="employeeId != null" >
+        #{employeeId,jdbcType=INTEGER},
+      </if>
+      <if test="positionId != null" >
+        #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null" >
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="employeeName != null" >
+        #{employeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeGender != null" >
+        #{employeeGender,jdbcType=INTEGER},
+      </if>
+      <if test="employeeEmail != null" >
+        #{employeeEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="employeePassword != null" >
+        #{employeePassword,jdbcType=VARCHAR},
+      </if>
+      <if test="employeePhone != null" >
+        #{employeePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeImage != null" >
+        #{employeeImage,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeStatus != null" >
+        #{employeeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zs.model.Employee" >
+    update tbl_employee_info
+    <set >
+      <if test="positionId != null" >
+        Position_Id = #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null" >
+        Department_Id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        Shop_Id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="employeeName != null" >
+        Employee_Name = #{employeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeGender != null" >
+        Employee_Gender = #{employeeGender,jdbcType=INTEGER},
+      </if>
+      <if test="employeeEmail != null" >
+        Employee_Email = #{employeeEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="employeePassword != null" >
+        Employee_Password = #{employeePassword,jdbcType=VARCHAR},
+      </if>
+      <if test="employeePhone != null" >
+        Employee_Phone = #{employeePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeImage != null" >
+        Employee_Image = #{employeeImage,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeStatus != null" >
+        Employee_Status = #{employeeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        Operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip = #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Employee_Id = #{employeeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zs.model.Employee" >
+    update tbl_employee_info
+    set Position_Id = #{positionId,jdbcType=INTEGER},
+      Department_Id = #{departmentId,jdbcType=INTEGER},
+      Shop_Id = #{shopId,jdbcType=INTEGER},
+      Employee_Name = #{employeeName,jdbcType=VARCHAR},
+      Employee_Gender = #{employeeGender,jdbcType=INTEGER},
+      Employee_Email = #{employeeEmail,jdbcType=VARCHAR},
+      Employee_Password = #{employeePassword,jdbcType=VARCHAR},
+      Employee_Phone = #{employeePhone,jdbcType=VARCHAR},
+      Employee_Image = #{employeeImage,jdbcType=VARCHAR},
+      Employee_Status = #{employeeStatus,jdbcType=INTEGER},
+      Remarks = #{remarks,jdbcType=VARCHAR},
+      Operation = #{operation,jdbcType=VARCHAR},
+      Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      Operation_Ip = #{operationIp,jdbcType=VARCHAR}
+    where Employee_Id = #{employeeId,jdbcType=INTEGER}
+  </update>
+</mapper>

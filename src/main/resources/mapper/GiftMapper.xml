@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zs.dao.GiftMapper" >
+  <resultMap id="BaseResultMap" type="com.zs.model.Gift" >
+    <id column="Gift_Id" property="giftId" jdbcType="INTEGER" />
+    <result column="Gift_Code" property="giftCode" jdbcType="VARCHAR" />
+    <result column="Gift_Name" property="giftName" jdbcType="VARCHAR" />
+    <result column="Gift_CateGory" property="giftCategory" jdbcType="INTEGER" />
+    <result column="Shop_Id" property="shopId" jdbcType="INTEGER" />
+    <result column="Gift_Metering" property="giftMetering" jdbcType="INTEGER" />
+    <result column="Gift_Score" property="giftScore" jdbcType="INTEGER" />
+    <result column="Gift_Image" property="giftImage" jdbcType="VARCHAR" />
+    <result column="Gift_CostPrice" property="giftCostprice" jdbcType="DOUBLE" />
+    <result column="Gift_Number" property="giftNumber" jdbcType="INTEGER" />
+    <result column="Gift_LevelNumber" property="giftLevelnumber" jdbcType="INTEGER" />
+    <result column="Gift_ProductionDate" property="giftProductiondate" jdbcType="TIMESTAMP" />
+    <result column="Gift_OutProductionDate" property="giftOutproductiondate" jdbcType="TIMESTAMP" />
+    <result column="Gift_Location" property="giftLocation" jdbcType="VARCHAR" />
+    <result column="Gift_Status" property="giftStatus" jdbcType="INTEGER" />
+    <result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="Operation" property="operation" jdbcType="VARCHAR" />
+    <result column="Operation_Date" property="operationDate" jdbcType="TIMESTAMP" />
+    <result column="Operation_Ip" property="operationIp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Gift_Id, Gift_Code, Gift_Name, Gift_CateGory, Shop_Id, Gift_Metering, Gift_Score, 
+    Gift_Image, Gift_CostPrice, Gift_Number, Gift_LevelNumber, Gift_ProductionDate, Gift_OutProductionDate, 
+    Gift_Location, Gift_Status, Remarks, Operation, Operation_Date, Operation_Ip
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_gift_info
+    where Gift_Id = #{giftId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_gift_info
+    where Gift_Id = #{giftId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zs.model.Gift" >
+    insert into tbl_gift_info (Gift_Id, Gift_Code, Gift_Name, 
+      Gift_CateGory, Shop_Id, Gift_Metering, 
+      Gift_Score, Gift_Image, Gift_CostPrice, 
+      Gift_Number, Gift_LevelNumber, Gift_ProductionDate, 
+      Gift_OutProductionDate, Gift_Location, 
+      Gift_Status, Remarks, Operation, 
+      Operation_Date, Operation_Ip)
+    values (#{giftId,jdbcType=INTEGER}, #{giftCode,jdbcType=VARCHAR}, #{giftName,jdbcType=VARCHAR}, 
+      #{giftCategory,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{giftMetering,jdbcType=INTEGER}, 
+      #{giftScore,jdbcType=INTEGER}, #{giftImage,jdbcType=VARCHAR}, #{giftCostprice,jdbcType=DOUBLE}, 
+      #{giftNumber,jdbcType=INTEGER}, #{giftLevelnumber,jdbcType=INTEGER}, #{giftProductiondate,jdbcType=TIMESTAMP}, 
+      #{giftOutproductiondate,jdbcType=TIMESTAMP}, #{giftLocation,jdbcType=VARCHAR}, 
+      #{giftStatus,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, #{operation,jdbcType=VARCHAR}, 
+      #{operationDate,jdbcType=TIMESTAMP}, #{operationIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zs.model.Gift" >
+    insert into tbl_gift_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="giftId != null" >
+        Gift_Id,
+      </if>
+      <if test="giftCode != null" >
+        Gift_Code,
+      </if>
+      <if test="giftName != null" >
+        Gift_Name,
+      </if>
+      <if test="giftCategory != null" >
+        Gift_CateGory,
+      </if>
+      <if test="shopId != null" >
+        Shop_Id,
+      </if>
+      <if test="giftMetering != null" >
+        Gift_Metering,
+      </if>
+      <if test="giftScore != null" >
+        Gift_Score,
+      </if>
+      <if test="giftImage != null" >
+        Gift_Image,
+      </if>
+      <if test="giftCostprice != null" >
+        Gift_CostPrice,
+      </if>
+      <if test="giftNumber != null" >
+        Gift_Number,
+      </if>
+      <if test="giftLevelnumber != null" >
+        Gift_LevelNumber,
+      </if>
+      <if test="giftProductiondate != null" >
+        Gift_ProductionDate,
+      </if>
+      <if test="giftOutproductiondate != null" >
+        Gift_OutProductionDate,
+      </if>
+      <if test="giftLocation != null" >
+        Gift_Location,
+      </if>
+      <if test="giftStatus != null" >
+        Gift_Status,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+      <if test="operation != null" >
+        Operation,
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date,
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="giftId != null" >
+        #{giftId,jdbcType=INTEGER},
+      </if>
+      <if test="giftCode != null" >
+        #{giftCode,jdbcType=VARCHAR},
+      </if>
+      <if test="giftName != null" >
+        #{giftName,jdbcType=VARCHAR},
+      </if>
+      <if test="giftCategory != null" >
+        #{giftCategory,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="giftMetering != null" >
+        #{giftMetering,jdbcType=INTEGER},
+      </if>
+      <if test="giftScore != null" >
+        #{giftScore,jdbcType=INTEGER},
+      </if>
+      <if test="giftImage != null" >
+        #{giftImage,jdbcType=VARCHAR},
+      </if>
+      <if test="giftCostprice != null" >
+        #{giftCostprice,jdbcType=DOUBLE},
+      </if>
+      <if test="giftNumber != null" >
+        #{giftNumber,jdbcType=INTEGER},
+      </if>
+      <if test="giftLevelnumber != null" >
+        #{giftLevelnumber,jdbcType=INTEGER},
+      </if>
+      <if test="giftProductiondate != null" >
+        #{giftProductiondate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="giftOutproductiondate != null" >
+        #{giftOutproductiondate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="giftLocation != null" >
+        #{giftLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="giftStatus != null" >
+        #{giftStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zs.model.Gift" >
+    update tbl_gift_info
+    <set >
+      <if test="giftCode != null" >
+        Gift_Code = #{giftCode,jdbcType=VARCHAR},
+      </if>
+      <if test="giftName != null" >
+        Gift_Name = #{giftName,jdbcType=VARCHAR},
+      </if>
+      <if test="giftCategory != null" >
+        Gift_CateGory = #{giftCategory,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        Shop_Id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="giftMetering != null" >
+        Gift_Metering = #{giftMetering,jdbcType=INTEGER},
+      </if>
+      <if test="giftScore != null" >
+        Gift_Score = #{giftScore,jdbcType=INTEGER},
+      </if>
+      <if test="giftImage != null" >
+        Gift_Image = #{giftImage,jdbcType=VARCHAR},
+      </if>
+      <if test="giftCostprice != null" >
+        Gift_CostPrice = #{giftCostprice,jdbcType=DOUBLE},
+      </if>
+      <if test="giftNumber != null" >
+        Gift_Number = #{giftNumber,jdbcType=INTEGER},
+      </if>
+      <if test="giftLevelnumber != null" >
+        Gift_LevelNumber = #{giftLevelnumber,jdbcType=INTEGER},
+      </if>
+      <if test="giftProductiondate != null" >
+        Gift_ProductionDate = #{giftProductiondate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="giftOutproductiondate != null" >
+        Gift_OutProductionDate = #{giftOutproductiondate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="giftLocation != null" >
+        Gift_Location = #{giftLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="giftStatus != null" >
+        Gift_Status = #{giftStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        Operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip = #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Gift_Id = #{giftId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zs.model.Gift" >
+    update tbl_gift_info
+    set Gift_Code = #{giftCode,jdbcType=VARCHAR},
+      Gift_Name = #{giftName,jdbcType=VARCHAR},
+      Gift_CateGory = #{giftCategory,jdbcType=INTEGER},
+      Shop_Id = #{shopId,jdbcType=INTEGER},
+      Gift_Metering = #{giftMetering,jdbcType=INTEGER},
+      Gift_Score = #{giftScore,jdbcType=INTEGER},
+      Gift_Image = #{giftImage,jdbcType=VARCHAR},
+      Gift_CostPrice = #{giftCostprice,jdbcType=DOUBLE},
+      Gift_Number = #{giftNumber,jdbcType=INTEGER},
+      Gift_LevelNumber = #{giftLevelnumber,jdbcType=INTEGER},
+      Gift_ProductionDate = #{giftProductiondate,jdbcType=TIMESTAMP},
+      Gift_OutProductionDate = #{giftOutproductiondate,jdbcType=TIMESTAMP},
+      Gift_Location = #{giftLocation,jdbcType=VARCHAR},
+      Gift_Status = #{giftStatus,jdbcType=INTEGER},
+      Remarks = #{remarks,jdbcType=VARCHAR},
+      Operation = #{operation,jdbcType=VARCHAR},
+      Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      Operation_Ip = #{operationIp,jdbcType=VARCHAR}
+    where Gift_Id = #{giftId,jdbcType=INTEGER}
+  </update>
+</mapper>

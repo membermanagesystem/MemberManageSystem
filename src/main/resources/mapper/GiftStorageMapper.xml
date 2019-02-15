@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zs.dao.GiftStorageMapper" >
+  <resultMap id="BaseResultMap" type="com.zs.model.GiftStorage" >
+    <id column="Record_Id" property="recordId" jdbcType="INTEGER" />
+    <result column="Gift_Id" property="giftId" jdbcType="INTEGER" />
+    <result column="Gift_Code" property="giftCode" jdbcType="VARCHAR" />
+    <result column="Gift_Name" property="giftName" jdbcType="VARCHAR" />
+    <result column="Shop_Id" property="shopId" jdbcType="INTEGER" />
+    <result column="Storage_Date" property="storageDate" jdbcType="TIMESTAMP" />
+    <result column="Storage_UnitPrice" property="storageUnitprice" jdbcType="DOUBLE" />
+    <result column="Storage_Number" property="storageNumber" jdbcType="INTEGER" />
+    <result column="Storage_TotalMoney" property="storageTotalmoney" jdbcType="DOUBLE" />
+    <result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="Operation" property="operation" jdbcType="VARCHAR" />
+    <result column="Operation_Date" property="operationDate" jdbcType="TIMESTAMP" />
+    <result column="Operation_Ip" property="operationIp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Record_Id, Gift_Id, Gift_Code, Gift_Name, Shop_Id, Storage_Date, Storage_UnitPrice, 
+    Storage_Number, Storage_TotalMoney, Remarks, Operation, Operation_Date, Operation_Ip
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_giftstorage_info
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_giftstorage_info
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zs.model.GiftStorage" >
+    insert into tbl_giftstorage_info (Record_Id, Gift_Id, Gift_Code, 
+      Gift_Name, Shop_Id, Storage_Date, 
+      Storage_UnitPrice, Storage_Number, Storage_TotalMoney, 
+      Remarks, Operation, Operation_Date, 
+      Operation_Ip)
+    values (#{recordId,jdbcType=INTEGER}, #{giftId,jdbcType=INTEGER}, #{giftCode,jdbcType=VARCHAR}, 
+      #{giftName,jdbcType=VARCHAR}, #{shopId,jdbcType=INTEGER}, #{storageDate,jdbcType=TIMESTAMP}, 
+      #{storageUnitprice,jdbcType=DOUBLE}, #{storageNumber,jdbcType=INTEGER}, #{storageTotalmoney,jdbcType=DOUBLE}, 
+      #{remarks,jdbcType=VARCHAR}, #{operation,jdbcType=VARCHAR}, #{operationDate,jdbcType=TIMESTAMP}, 
+      #{operationIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zs.model.GiftStorage" >
+    insert into tbl_giftstorage_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        Record_Id,
+      </if>
+      <if test="giftId != null" >
+        Gift_Id,
+      </if>
+      <if test="giftCode != null" >
+        Gift_Code,
+      </if>
+      <if test="giftName != null" >
+        Gift_Name,
+      </if>
+      <if test="shopId != null" >
+        Shop_Id,
+      </if>
+      <if test="storageDate != null" >
+        Storage_Date,
+      </if>
+      <if test="storageUnitprice != null" >
+        Storage_UnitPrice,
+      </if>
+      <if test="storageNumber != null" >
+        Storage_Number,
+      </if>
+      <if test="storageTotalmoney != null" >
+        Storage_TotalMoney,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+      <if test="operation != null" >
+        Operation,
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date,
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        #{recordId,jdbcType=INTEGER},
+      </if>
+      <if test="giftId != null" >
+        #{giftId,jdbcType=INTEGER},
+      </if>
+      <if test="giftCode != null" >
+        #{giftCode,jdbcType=VARCHAR},
+      </if>
+      <if test="giftName != null" >
+        #{giftName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="storageDate != null" >
+        #{storageDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storageUnitprice != null" >
+        #{storageUnitprice,jdbcType=DOUBLE},
+      </if>
+      <if test="storageNumber != null" >
+        #{storageNumber,jdbcType=INTEGER},
+      </if>
+      <if test="storageTotalmoney != null" >
+        #{storageTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zs.model.GiftStorage" >
+    update tbl_giftstorage_info
+    <set >
+      <if test="giftId != null" >
+        Gift_Id = #{giftId,jdbcType=INTEGER},
+      </if>
+      <if test="giftCode != null" >
+        Gift_Code = #{giftCode,jdbcType=VARCHAR},
+      </if>
+      <if test="giftName != null" >
+        Gift_Name = #{giftName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        Shop_Id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="storageDate != null" >
+        Storage_Date = #{storageDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storageUnitprice != null" >
+        Storage_UnitPrice = #{storageUnitprice,jdbcType=DOUBLE},
+      </if>
+      <if test="storageNumber != null" >
+        Storage_Number = #{storageNumber,jdbcType=INTEGER},
+      </if>
+      <if test="storageTotalmoney != null" >
+        Storage_TotalMoney = #{storageTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        Operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip = #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zs.model.GiftStorage" >
+    update tbl_giftstorage_info
+    set Gift_Id = #{giftId,jdbcType=INTEGER},
+      Gift_Code = #{giftCode,jdbcType=VARCHAR},
+      Gift_Name = #{giftName,jdbcType=VARCHAR},
+      Shop_Id = #{shopId,jdbcType=INTEGER},
+      Storage_Date = #{storageDate,jdbcType=TIMESTAMP},
+      Storage_UnitPrice = #{storageUnitprice,jdbcType=DOUBLE},
+      Storage_Number = #{storageNumber,jdbcType=INTEGER},
+      Storage_TotalMoney = #{storageTotalmoney,jdbcType=DOUBLE},
+      Remarks = #{remarks,jdbcType=VARCHAR},
+      Operation = #{operation,jdbcType=VARCHAR},
+      Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      Operation_Ip = #{operationIp,jdbcType=VARCHAR}
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </update>
+</mapper>

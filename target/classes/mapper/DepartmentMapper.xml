@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zs.dao.DepartmentMapper" >
+  <resultMap id="BaseResultMap" type="com.zs.model.Department" >
+    <id column="Department_Id" property="departmentId" jdbcType="INTEGER" />
+    <result column="Department_Name" property="departmentName" jdbcType="VARCHAR" />
+    <result column="Department_Ratio" property="departmentRatio" jdbcType="VARCHAR" />
+    <result column="Shop_Id" property="shopId" jdbcType="INTEGER" />
+    <result column="Department_Status" property="departmentStatus" jdbcType="INTEGER" />
+    <result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="Operation" property="operation" jdbcType="VARCHAR" />
+    <result column="Operation_Date" property="operationDate" jdbcType="TIMESTAMP" />
+    <result column="Operation_Ip" property="operationIp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Department_Id, Department_Name, Department_Ratio, Shop_Id, Department_Status, Remarks, 
+    Operation, Operation_Date, Operation_Ip
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_department_info
+    where Department_Id = #{departmentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_department_info
+    where Department_Id = #{departmentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zs.model.Department" >
+    insert into tbl_department_info (Department_Id, Department_Name, Department_Ratio, 
+      Shop_Id, Department_Status, Remarks, 
+      Operation, Operation_Date, Operation_Ip
+      )
+    values (#{departmentId,jdbcType=INTEGER}, #{departmentName,jdbcType=VARCHAR}, #{departmentRatio,jdbcType=VARCHAR}, 
+      #{shopId,jdbcType=INTEGER}, #{departmentStatus,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, 
+      #{operation,jdbcType=VARCHAR}, #{operationDate,jdbcType=TIMESTAMP}, #{operationIp,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zs.model.Department" >
+    insert into tbl_department_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="departmentId != null" >
+        Department_Id,
+      </if>
+      <if test="departmentName != null" >
+        Department_Name,
+      </if>
+      <if test="departmentRatio != null" >
+        Department_Ratio,
+      </if>
+      <if test="shopId != null" >
+        Shop_Id,
+      </if>
+      <if test="departmentStatus != null" >
+        Department_Status,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+      <if test="operation != null" >
+        Operation,
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date,
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="departmentId != null" >
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentName != null" >
+        #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentRatio != null" >
+        #{departmentRatio,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentStatus != null" >
+        #{departmentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zs.model.Department" >
+    update tbl_department_info
+    <set >
+      <if test="departmentName != null" >
+        Department_Name = #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentRatio != null" >
+        Department_Ratio = #{departmentRatio,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        Shop_Id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentStatus != null" >
+        Department_Status = #{departmentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        Operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip = #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Department_Id = #{departmentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zs.model.Department" >
+    update tbl_department_info
+    set Department_Name = #{departmentName,jdbcType=VARCHAR},
+      Department_Ratio = #{departmentRatio,jdbcType=VARCHAR},
+      Shop_Id = #{shopId,jdbcType=INTEGER},
+      Department_Status = #{departmentStatus,jdbcType=INTEGER},
+      Remarks = #{remarks,jdbcType=VARCHAR},
+      Operation = #{operation,jdbcType=VARCHAR},
+      Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      Operation_Ip = #{operationIp,jdbcType=VARCHAR}
+    where Department_Id = #{departmentId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zs.dao.MemberreChargeMapper" >
+  <resultMap id="BaseResultMap" type="com.zs.model.MemberreCharge" >
+    <id column="Record_Id" property="recordId" jdbcType="INTEGER" />
+    <result column="Member_Id" property="memberId" jdbcType="VARCHAR" />
+    <result column="Member_Recharge" property="memberRecharge" jdbcType="DOUBLE" />
+    <result column="Member_RechargeType" property="memberRechargetype" jdbcType="INTEGER" />
+    <result column="Member_RechargeTime" property="memberRechargetime" jdbcType="TIMESTAMP" />
+    <result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="Operation" property="operation" jdbcType="VARCHAR" />
+    <result column="Operation_Date" property="operationDate" jdbcType="TIMESTAMP" />
+    <result column="Operation_Ip" property="operationIp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Record_Id, Member_Id, Member_Recharge, Member_RechargeType, Member_RechargeTime, 
+    Remarks, Operation, Operation_Date, Operation_Ip
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_memberrecharge_info
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_memberrecharge_info
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zs.model.MemberreCharge" >
+    insert into tbl_memberrecharge_info (Record_Id, Member_Id, Member_Recharge, 
+      Member_RechargeType, Member_RechargeTime, 
+      Remarks, Operation, Operation_Date, 
+      Operation_Ip)
+    values (#{recordId,jdbcType=INTEGER}, #{memberId,jdbcType=VARCHAR}, #{memberRecharge,jdbcType=DOUBLE}, 
+      #{memberRechargetype,jdbcType=INTEGER}, #{memberRechargetime,jdbcType=TIMESTAMP}, 
+      #{remarks,jdbcType=VARCHAR}, #{operation,jdbcType=VARCHAR}, #{operationDate,jdbcType=TIMESTAMP}, 
+      #{operationIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zs.model.MemberreCharge" >
+    insert into tbl_memberrecharge_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        Record_Id,
+      </if>
+      <if test="memberId != null" >
+        Member_Id,
+      </if>
+      <if test="memberRecharge != null" >
+        Member_Recharge,
+      </if>
+      <if test="memberRechargetype != null" >
+        Member_RechargeType,
+      </if>
+      <if test="memberRechargetime != null" >
+        Member_RechargeTime,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+      <if test="operation != null" >
+        Operation,
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date,
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        #{recordId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="memberRecharge != null" >
+        #{memberRecharge,jdbcType=DOUBLE},
+      </if>
+      <if test="memberRechargetype != null" >
+        #{memberRechargetype,jdbcType=INTEGER},
+      </if>
+      <if test="memberRechargetime != null" >
+        #{memberRechargetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zs.model.MemberreCharge" >
+    update tbl_memberrecharge_info
+    <set >
+      <if test="memberId != null" >
+        Member_Id = #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="memberRecharge != null" >
+        Member_Recharge = #{memberRecharge,jdbcType=DOUBLE},
+      </if>
+      <if test="memberRechargetype != null" >
+        Member_RechargeType = #{memberRechargetype,jdbcType=INTEGER},
+      </if>
+      <if test="memberRechargetime != null" >
+        Member_RechargeTime = #{memberRechargetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        Operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip = #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zs.model.MemberreCharge" >
+    update tbl_memberrecharge_info
+    set Member_Id = #{memberId,jdbcType=VARCHAR},
+      Member_Recharge = #{memberRecharge,jdbcType=DOUBLE},
+      Member_RechargeType = #{memberRechargetype,jdbcType=INTEGER},
+      Member_RechargeTime = #{memberRechargetime,jdbcType=TIMESTAMP},
+      Remarks = #{remarks,jdbcType=VARCHAR},
+      Operation = #{operation,jdbcType=VARCHAR},
+      Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      Operation_Ip = #{operationIp,jdbcType=VARCHAR}
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </update>
+</mapper>

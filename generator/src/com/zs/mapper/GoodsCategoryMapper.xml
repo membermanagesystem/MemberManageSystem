@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zs.dao.GoodsCategoryMapper" >
+  <resultMap id="BaseResultMap" type="com.zs.model.GoodsCategory" >
+    <id column="Category_Id" property="categoryId" jdbcType="INTEGER" />
+    <result column="Category_Name" property="categoryName" jdbcType="VARCHAR" />
+    <result column="Category_UpperId" property="categoryUpperid" jdbcType="VARCHAR" />
+    <result column="Category_Status" property="categoryStatus" jdbcType="INTEGER" />
+    <result column="Shop_Id" property="shopId" jdbcType="INTEGER" />
+    <result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="Operation" property="operation" jdbcType="VARCHAR" />
+    <result column="Operation_Date" property="operationDate" jdbcType="TIMESTAMP" />
+    <result column="Operation_Ip" property="operationIp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Category_Id, Category_Name, Category_UpperId, Category_Status, Shop_Id, Remarks, 
+    Operation, Operation_Date, Operation_Ip
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_goodscategory_info
+    where Category_Id = #{categoryId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_goodscategory_info
+    where Category_Id = #{categoryId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zs.model.GoodsCategory" >
+    insert into tbl_goodscategory_info (Category_Id, Category_Name, Category_UpperId, 
+      Category_Status, Shop_Id, Remarks, 
+      Operation, Operation_Date, Operation_Ip
+      )
+    values (#{categoryId,jdbcType=INTEGER}, #{categoryName,jdbcType=VARCHAR}, #{categoryUpperid,jdbcType=VARCHAR}, 
+      #{categoryStatus,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, 
+      #{operation,jdbcType=VARCHAR}, #{operationDate,jdbcType=TIMESTAMP}, #{operationIp,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zs.model.GoodsCategory" >
+    insert into tbl_goodscategory_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="categoryId != null" >
+        Category_Id,
+      </if>
+      <if test="categoryName != null" >
+        Category_Name,
+      </if>
+      <if test="categoryUpperid != null" >
+        Category_UpperId,
+      </if>
+      <if test="categoryStatus != null" >
+        Category_Status,
+      </if>
+      <if test="shopId != null" >
+        Shop_Id,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+      <if test="operation != null" >
+        Operation,
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date,
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryName != null" >
+        #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryUpperid != null" >
+        #{categoryUpperid,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryStatus != null" >
+        #{categoryStatus,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zs.model.GoodsCategory" >
+    update tbl_goodscategory_info
+    <set >
+      <if test="categoryName != null" >
+        Category_Name = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryUpperid != null" >
+        Category_UpperId = #{categoryUpperid,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryStatus != null" >
+        Category_Status = #{categoryStatus,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        Shop_Id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        Operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip = #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Category_Id = #{categoryId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zs.model.GoodsCategory" >
+    update tbl_goodscategory_info
+    set Category_Name = #{categoryName,jdbcType=VARCHAR},
+      Category_UpperId = #{categoryUpperid,jdbcType=VARCHAR},
+      Category_Status = #{categoryStatus,jdbcType=INTEGER},
+      Shop_Id = #{shopId,jdbcType=INTEGER},
+      Remarks = #{remarks,jdbcType=VARCHAR},
+      Operation = #{operation,jdbcType=VARCHAR},
+      Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      Operation_Ip = #{operationIp,jdbcType=VARCHAR}
+    where Category_Id = #{categoryId,jdbcType=INTEGER}
+  </update>
+</mapper>

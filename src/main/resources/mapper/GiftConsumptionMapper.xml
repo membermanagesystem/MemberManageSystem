@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zs.dao.GiftConsumptionMapper" >
+  <resultMap id="BaseResultMap" type="com.zs.model.GiftConsumption" >
+    <id column="Record_Id" property="recordId" jdbcType="INTEGER" />
+    <result column="Member_Id" property="memberId" jdbcType="INTEGER" />
+    <result column="Employee_Id" property="employeeId" jdbcType="VARCHAR" />
+    <result column="Shop_Id" property="shopId" jdbcType="INTEGER" />
+    <result column="Consumption_Date" property="consumptionDate" jdbcType="TIMESTAMP" />
+    <result column="Consumption_TotalScore" property="consumptionTotalscore" jdbcType="INTEGER" />
+    <result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="Operation" property="operation" jdbcType="VARCHAR" />
+    <result column="Operation_Date" property="operationDate" jdbcType="TIMESTAMP" />
+    <result column="Operation_Ip" property="operationIp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Record_Id, Member_Id, Employee_Id, Shop_Id, Consumption_Date, Consumption_TotalScore, 
+    Remarks, Operation, Operation_Date, Operation_Ip
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_giftconsumption_info
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_giftconsumption_info
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zs.model.GiftConsumption" >
+    insert into tbl_giftconsumption_info (Record_Id, Member_Id, Employee_Id, 
+      Shop_Id, Consumption_Date, Consumption_TotalScore, 
+      Remarks, Operation, Operation_Date, 
+      Operation_Ip)
+    values (#{recordId,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{employeeId,jdbcType=VARCHAR}, 
+      #{shopId,jdbcType=INTEGER}, #{consumptionDate,jdbcType=TIMESTAMP}, #{consumptionTotalscore,jdbcType=INTEGER}, 
+      #{remarks,jdbcType=VARCHAR}, #{operation,jdbcType=VARCHAR}, #{operationDate,jdbcType=TIMESTAMP}, 
+      #{operationIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zs.model.GiftConsumption" >
+    insert into tbl_giftconsumption_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        Record_Id,
+      </if>
+      <if test="memberId != null" >
+        Member_Id,
+      </if>
+      <if test="employeeId != null" >
+        Employee_Id,
+      </if>
+      <if test="shopId != null" >
+        Shop_Id,
+      </if>
+      <if test="consumptionDate != null" >
+        Consumption_Date,
+      </if>
+      <if test="consumptionTotalscore != null" >
+        Consumption_TotalScore,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+      <if test="operation != null" >
+        Operation,
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date,
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        #{recordId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="employeeId != null" >
+        #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="consumptionDate != null" >
+        #{consumptionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="consumptionTotalscore != null" >
+        #{consumptionTotalscore,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zs.model.GiftConsumption" >
+    update tbl_giftconsumption_info
+    <set >
+      <if test="memberId != null" >
+        Member_Id = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="employeeId != null" >
+        Employee_Id = #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        Shop_Id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="consumptionDate != null" >
+        Consumption_Date = #{consumptionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="consumptionTotalscore != null" >
+        Consumption_TotalScore = #{consumptionTotalscore,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        Operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip = #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zs.model.GiftConsumption" >
+    update tbl_giftconsumption_info
+    set Member_Id = #{memberId,jdbcType=INTEGER},
+      Employee_Id = #{employeeId,jdbcType=VARCHAR},
+      Shop_Id = #{shopId,jdbcType=INTEGER},
+      Consumption_Date = #{consumptionDate,jdbcType=TIMESTAMP},
+      Consumption_TotalScore = #{consumptionTotalscore,jdbcType=INTEGER},
+      Remarks = #{remarks,jdbcType=VARCHAR},
+      Operation = #{operation,jdbcType=VARCHAR},
+      Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      Operation_Ip = #{operationIp,jdbcType=VARCHAR}
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zs.dao.ColumnMapper" >
+  <resultMap id="BaseResultMap" type="com.zs.model.Column" >
+    <id column="Column_Id" property="columnId" jdbcType="INTEGER" />
+    <result column="Column_Name" property="columnName" jdbcType="VARCHAR" />
+    <result column="Column_Url" property="columnUrl" jdbcType="VARCHAR" />
+    <result column="Column_UpperLevel" property="columnUpperlevel" jdbcType="VARCHAR" />
+    <result column="Columu_Level" property="columuLevel" jdbcType="INTEGER" />
+    <result column="Columu_Rank" property="columuRank" jdbcType="INTEGER" />
+    <result column="Columu_Status" property="columuStatus" jdbcType="INTEGER" />
+    <result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="Operation" property="operation" jdbcType="VARCHAR" />
+    <result column="Operation_Date" property="operationDate" jdbcType="TIMESTAMP" />
+    <result column="Operation_Ip" property="operationIp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Column_Id, Column_Name, Column_Url, Column_UpperLevel, Columu_Level, Columu_Rank, 
+    Columu_Status, Remarks, Operation, Operation_Date, Operation_Ip
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_column_info
+    where Column_Id = #{columnId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_column_info
+    where Column_Id = #{columnId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zs.model.Column" >
+    insert into tbl_column_info (Column_Id, Column_Name, Column_Url, 
+      Column_UpperLevel, Columu_Level, Columu_Rank, 
+      Columu_Status, Remarks, Operation, 
+      Operation_Date, Operation_Ip)
+    values (#{columnId,jdbcType=INTEGER}, #{columnName,jdbcType=VARCHAR}, #{columnUrl,jdbcType=VARCHAR}, 
+      #{columnUpperlevel,jdbcType=VARCHAR}, #{columuLevel,jdbcType=INTEGER}, #{columuRank,jdbcType=INTEGER}, 
+      #{columuStatus,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, #{operation,jdbcType=VARCHAR}, 
+      #{operationDate,jdbcType=TIMESTAMP}, #{operationIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zs.model.Column" >
+    insert into tbl_column_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="columnId != null" >
+        Column_Id,
+      </if>
+      <if test="columnName != null" >
+        Column_Name,
+      </if>
+      <if test="columnUrl != null" >
+        Column_Url,
+      </if>
+      <if test="columnUpperlevel != null" >
+        Column_UpperLevel,
+      </if>
+      <if test="columuLevel != null" >
+        Columu_Level,
+      </if>
+      <if test="columuRank != null" >
+        Columu_Rank,
+      </if>
+      <if test="columuStatus != null" >
+        Columu_Status,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+      <if test="operation != null" >
+        Operation,
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date,
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="columnId != null" >
+        #{columnId,jdbcType=INTEGER},
+      </if>
+      <if test="columnName != null" >
+        #{columnName,jdbcType=VARCHAR},
+      </if>
+      <if test="columnUrl != null" >
+        #{columnUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="columnUpperlevel != null" >
+        #{columnUpperlevel,jdbcType=VARCHAR},
+      </if>
+      <if test="columuLevel != null" >
+        #{columuLevel,jdbcType=INTEGER},
+      </if>
+      <if test="columuRank != null" >
+        #{columuRank,jdbcType=INTEGER},
+      </if>
+      <if test="columuStatus != null" >
+        #{columuStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zs.model.Column" >
+    update tbl_column_info
+    <set >
+      <if test="columnName != null" >
+        Column_Name = #{columnName,jdbcType=VARCHAR},
+      </if>
+      <if test="columnUrl != null" >
+        Column_Url = #{columnUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="columnUpperlevel != null" >
+        Column_UpperLevel = #{columnUpperlevel,jdbcType=VARCHAR},
+      </if>
+      <if test="columuLevel != null" >
+        Columu_Level = #{columuLevel,jdbcType=INTEGER},
+      </if>
+      <if test="columuRank != null" >
+        Columu_Rank = #{columuRank,jdbcType=INTEGER},
+      </if>
+      <if test="columuStatus != null" >
+        Columu_Status = #{columuStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        Operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip = #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Column_Id = #{columnId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zs.model.Column" >
+    update tbl_column_info
+    set Column_Name = #{columnName,jdbcType=VARCHAR},
+      Column_Url = #{columnUrl,jdbcType=VARCHAR},
+      Column_UpperLevel = #{columnUpperlevel,jdbcType=VARCHAR},
+      Columu_Level = #{columuLevel,jdbcType=INTEGER},
+      Columu_Rank = #{columuRank,jdbcType=INTEGER},
+      Columu_Status = #{columuStatus,jdbcType=INTEGER},
+      Remarks = #{remarks,jdbcType=VARCHAR},
+      Operation = #{operation,jdbcType=VARCHAR},
+      Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      Operation_Ip = #{operationIp,jdbcType=VARCHAR}
+    where Column_Id = #{columnId,jdbcType=INTEGER}
+  </update>
+</mapper>

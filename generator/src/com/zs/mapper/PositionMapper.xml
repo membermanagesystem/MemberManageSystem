@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zs.dao.PositionMapper" >
+  <resultMap id="BaseResultMap" type="com.zs.model.Position" >
+    <id column="Position_Id" property="positionId" jdbcType="INTEGER" />
+    <result column="Department_Id" property="departmentId" jdbcType="INTEGER" />
+    <result column="Shop_Id" property="shopId" jdbcType="INTEGER" />
+    <result column="Position_Name" property="positionName" jdbcType="VARCHAR" />
+    <result column="Positon_Description" property="positonDescription" jdbcType="INTEGER" />
+    <result column="Positon_Status" property="positonStatus" jdbcType="INTEGER" />
+    <result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="Operation" property="operation" jdbcType="VARCHAR" />
+    <result column="Operation_Date" property="operationDate" jdbcType="TIMESTAMP" />
+    <result column="Operation_Ip" property="operationIp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Position_Id, Department_Id, Shop_Id, Position_Name, Positon_Description, Positon_Status, 
+    Remarks, Operation, Operation_Date, Operation_Ip
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_position_info
+    where Position_Id = #{positionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_position_info
+    where Position_Id = #{positionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zs.model.Position" >
+    insert into tbl_position_info (Position_Id, Department_Id, Shop_Id, 
+      Position_Name, Positon_Description, Positon_Status, 
+      Remarks, Operation, Operation_Date, 
+      Operation_Ip)
+    values (#{positionId,jdbcType=INTEGER}, #{departmentId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, 
+      #{positionName,jdbcType=VARCHAR}, #{positonDescription,jdbcType=INTEGER}, #{positonStatus,jdbcType=INTEGER}, 
+      #{remarks,jdbcType=VARCHAR}, #{operation,jdbcType=VARCHAR}, #{operationDate,jdbcType=TIMESTAMP}, 
+      #{operationIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zs.model.Position" >
+    insert into tbl_position_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="positionId != null" >
+        Position_Id,
+      </if>
+      <if test="departmentId != null" >
+        Department_Id,
+      </if>
+      <if test="shopId != null" >
+        Shop_Id,
+      </if>
+      <if test="positionName != null" >
+        Position_Name,
+      </if>
+      <if test="positonDescription != null" >
+        Positon_Description,
+      </if>
+      <if test="positonStatus != null" >
+        Positon_Status,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+      <if test="operation != null" >
+        Operation,
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date,
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="positionId != null" >
+        #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null" >
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="positionName != null" >
+        #{positionName,jdbcType=VARCHAR},
+      </if>
+      <if test="positonDescription != null" >
+        #{positonDescription,jdbcType=INTEGER},
+      </if>
+      <if test="positonStatus != null" >
+        #{positonStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zs.model.Position" >
+    update tbl_position_info
+    <set >
+      <if test="departmentId != null" >
+        Department_Id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        Shop_Id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="positionName != null" >
+        Position_Name = #{positionName,jdbcType=VARCHAR},
+      </if>
+      <if test="positonDescription != null" >
+        Positon_Description = #{positonDescription,jdbcType=INTEGER},
+      </if>
+      <if test="positonStatus != null" >
+        Positon_Status = #{positonStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        Operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip = #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Position_Id = #{positionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zs.model.Position" >
+    update tbl_position_info
+    set Department_Id = #{departmentId,jdbcType=INTEGER},
+      Shop_Id = #{shopId,jdbcType=INTEGER},
+      Position_Name = #{positionName,jdbcType=VARCHAR},
+      Positon_Description = #{positonDescription,jdbcType=INTEGER},
+      Positon_Status = #{positonStatus,jdbcType=INTEGER},
+      Remarks = #{remarks,jdbcType=VARCHAR},
+      Operation = #{operation,jdbcType=VARCHAR},
+      Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      Operation_Ip = #{operationIp,jdbcType=VARCHAR}
+    where Position_Id = #{positionId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zs.dao.GoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.zs.model.Goods" >
+    <id column="Goods_Id" property="goodsId" jdbcType="INTEGER" />
+    <result column="Goods_Code" property="goodsCode" jdbcType="VARCHAR" />
+    <result column="Goods_Name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="Category_Id" property="categoryId" jdbcType="INTEGER" />
+    <result column="Shop_Id" property="shopId" jdbcType="INTEGER" />
+    <result column="Goods_Metering" property="goodsMetering" jdbcType="INTEGER" />
+    <result column="Goods_Score" property="goodsScore" jdbcType="INTEGER" />
+    <result column="Goods_Image" property="goodsImage" jdbcType="VARCHAR" />
+    <result column="Goods_Bonus" property="goodsBonus" jdbcType="DOUBLE" />
+    <result column="Goods_CostPrice" property="goodsCostprice" jdbcType="DOUBLE" />
+    <result column="Goods_SalePrice" property="goodsSaleprice" jdbcType="DOUBLE" />
+    <result column="Goods_Discount" property="goodsDiscount" jdbcType="DOUBLE" />
+    <result column="Goods_Number" property="goodsNumber" jdbcType="INTEGER" />
+    <result column="Goods_LevelNumber" property="goodsLevelnumber" jdbcType="INTEGER" />
+    <result column="Goods_ProductionDate" property="goodsProductiondate" jdbcType="TIMESTAMP" />
+    <result column="Goods_OutProductionDate" property="goodsOutproductiondate" jdbcType="TIMESTAMP" />
+    <result column="Goods_Location" property="goodsLocation" jdbcType="VARCHAR" />
+    <result column="Goods_Status" property="goodsStatus" jdbcType="INTEGER" />
+    <result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="Operation" property="operation" jdbcType="VARCHAR" />
+    <result column="Operation_Date" property="operationDate" jdbcType="TIMESTAMP" />
+    <result column="Operation_Ip" property="operationIp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Goods_Id, Goods_Code, Goods_Name, Category_Id, Shop_Id, Goods_Metering, Goods_Score, 
+    Goods_Image, Goods_Bonus, Goods_CostPrice, Goods_SalePrice, Goods_Discount, Goods_Number, 
+    Goods_LevelNumber, Goods_ProductionDate, Goods_OutProductionDate, Goods_Location, 
+    Goods_Status, Remarks, Operation, Operation_Date, Operation_Ip
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_goods_info
+    where Goods_Id = #{goodsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_goods_info
+    where Goods_Id = #{goodsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zs.model.Goods" >
+    insert into tbl_goods_info (Goods_Id, Goods_Code, Goods_Name, 
+      Category_Id, Shop_Id, Goods_Metering, 
+      Goods_Score, Goods_Image, Goods_Bonus, 
+      Goods_CostPrice, Goods_SalePrice, Goods_Discount, 
+      Goods_Number, Goods_LevelNumber, Goods_ProductionDate, 
+      Goods_OutProductionDate, Goods_Location, 
+      Goods_Status, Remarks, Operation, 
+      Operation_Date, Operation_Ip)
+    values (#{goodsId,jdbcType=INTEGER}, #{goodsCode,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR}, 
+      #{categoryId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{goodsMetering,jdbcType=INTEGER}, 
+      #{goodsScore,jdbcType=INTEGER}, #{goodsImage,jdbcType=VARCHAR}, #{goodsBonus,jdbcType=DOUBLE}, 
+      #{goodsCostprice,jdbcType=DOUBLE}, #{goodsSaleprice,jdbcType=DOUBLE}, #{goodsDiscount,jdbcType=DOUBLE}, 
+      #{goodsNumber,jdbcType=INTEGER}, #{goodsLevelnumber,jdbcType=INTEGER}, #{goodsProductiondate,jdbcType=TIMESTAMP}, 
+      #{goodsOutproductiondate,jdbcType=TIMESTAMP}, #{goodsLocation,jdbcType=VARCHAR}, 
+      #{goodsStatus,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, #{operation,jdbcType=VARCHAR}, 
+      #{operationDate,jdbcType=TIMESTAMP}, #{operationIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zs.model.Goods" >
+    insert into tbl_goods_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        Goods_Id,
+      </if>
+      <if test="goodsCode != null" >
+        Goods_Code,
+      </if>
+      <if test="goodsName != null" >
+        Goods_Name,
+      </if>
+      <if test="categoryId != null" >
+        Category_Id,
+      </if>
+      <if test="shopId != null" >
+        Shop_Id,
+      </if>
+      <if test="goodsMetering != null" >
+        Goods_Metering,
+      </if>
+      <if test="goodsScore != null" >
+        Goods_Score,
+      </if>
+      <if test="goodsImage != null" >
+        Goods_Image,
+      </if>
+      <if test="goodsBonus != null" >
+        Goods_Bonus,
+      </if>
+      <if test="goodsCostprice != null" >
+        Goods_CostPrice,
+      </if>
+      <if test="goodsSaleprice != null" >
+        Goods_SalePrice,
+      </if>
+      <if test="goodsDiscount != null" >
+        Goods_Discount,
+      </if>
+      <if test="goodsNumber != null" >
+        Goods_Number,
+      </if>
+      <if test="goodsLevelnumber != null" >
+        Goods_LevelNumber,
+      </if>
+      <if test="goodsProductiondate != null" >
+        Goods_ProductionDate,
+      </if>
+      <if test="goodsOutproductiondate != null" >
+        Goods_OutProductionDate,
+      </if>
+      <if test="goodsLocation != null" >
+        Goods_Location,
+      </if>
+      <if test="goodsStatus != null" >
+        Goods_Status,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+      <if test="operation != null" >
+        Operation,
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date,
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsCode != null" >
+        #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsMetering != null" >
+        #{goodsMetering,jdbcType=INTEGER},
+      </if>
+      <if test="goodsScore != null" >
+        #{goodsScore,jdbcType=INTEGER},
+      </if>
+      <if test="goodsImage != null" >
+        #{goodsImage,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsBonus != null" >
+        #{goodsBonus,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsCostprice != null" >
+        #{goodsCostprice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsSaleprice != null" >
+        #{goodsSaleprice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsDiscount != null" >
+        #{goodsDiscount,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsNumber != null" >
+        #{goodsNumber,jdbcType=INTEGER},
+      </if>
+      <if test="goodsLevelnumber != null" >
+        #{goodsLevelnumber,jdbcType=INTEGER},
+      </if>
+      <if test="goodsProductiondate != null" >
+        #{goodsProductiondate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsOutproductiondate != null" >
+        #{goodsOutproductiondate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsLocation != null" >
+        #{goodsLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsStatus != null" >
+        #{goodsStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zs.model.Goods" >
+    update tbl_goods_info
+    <set >
+      <if test="goodsCode != null" >
+        Goods_Code = #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        Goods_Name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null" >
+        Category_Id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        Shop_Id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsMetering != null" >
+        Goods_Metering = #{goodsMetering,jdbcType=INTEGER},
+      </if>
+      <if test="goodsScore != null" >
+        Goods_Score = #{goodsScore,jdbcType=INTEGER},
+      </if>
+      <if test="goodsImage != null" >
+        Goods_Image = #{goodsImage,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsBonus != null" >
+        Goods_Bonus = #{goodsBonus,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsCostprice != null" >
+        Goods_CostPrice = #{goodsCostprice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsSaleprice != null" >
+        Goods_SalePrice = #{goodsSaleprice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsDiscount != null" >
+        Goods_Discount = #{goodsDiscount,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsNumber != null" >
+        Goods_Number = #{goodsNumber,jdbcType=INTEGER},
+      </if>
+      <if test="goodsLevelnumber != null" >
+        Goods_LevelNumber = #{goodsLevelnumber,jdbcType=INTEGER},
+      </if>
+      <if test="goodsProductiondate != null" >
+        Goods_ProductionDate = #{goodsProductiondate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsOutproductiondate != null" >
+        Goods_OutProductionDate = #{goodsOutproductiondate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsLocation != null" >
+        Goods_Location = #{goodsLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsStatus != null" >
+        Goods_Status = #{goodsStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        Operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip = #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Goods_Id = #{goodsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zs.model.Goods" >
+    update tbl_goods_info
+    set Goods_Code = #{goodsCode,jdbcType=VARCHAR},
+      Goods_Name = #{goodsName,jdbcType=VARCHAR},
+      Category_Id = #{categoryId,jdbcType=INTEGER},
+      Shop_Id = #{shopId,jdbcType=INTEGER},
+      Goods_Metering = #{goodsMetering,jdbcType=INTEGER},
+      Goods_Score = #{goodsScore,jdbcType=INTEGER},
+      Goods_Image = #{goodsImage,jdbcType=VARCHAR},
+      Goods_Bonus = #{goodsBonus,jdbcType=DOUBLE},
+      Goods_CostPrice = #{goodsCostprice,jdbcType=DOUBLE},
+      Goods_SalePrice = #{goodsSaleprice,jdbcType=DOUBLE},
+      Goods_Discount = #{goodsDiscount,jdbcType=DOUBLE},
+      Goods_Number = #{goodsNumber,jdbcType=INTEGER},
+      Goods_LevelNumber = #{goodsLevelnumber,jdbcType=INTEGER},
+      Goods_ProductionDate = #{goodsProductiondate,jdbcType=TIMESTAMP},
+      Goods_OutProductionDate = #{goodsOutproductiondate,jdbcType=TIMESTAMP},
+      Goods_Location = #{goodsLocation,jdbcType=VARCHAR},
+      Goods_Status = #{goodsStatus,jdbcType=INTEGER},
+      Remarks = #{remarks,jdbcType=VARCHAR},
+      Operation = #{operation,jdbcType=VARCHAR},
+      Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      Operation_Ip = #{operationIp,jdbcType=VARCHAR}
+    where Goods_Id = #{goodsId,jdbcType=INTEGER}
+  </update>
+</mapper>

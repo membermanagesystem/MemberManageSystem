@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zs.dao.MemberMapper" >
+  <resultMap id="BaseResultMap" type="com.zs.model.Member" >
+    <id column="Member_Id" property="memberId" jdbcType="INTEGER" />
+    <result column="Member_CardNum" property="memberCardnum" jdbcType="VARCHAR" />
+    <result column="Member_Name" property="memberName" jdbcType="VARCHAR" />
+    <result column="Member_Gender" property="memberGender" jdbcType="INTEGER" />
+    <result column="Member_IdNum" property="memberIdnum" jdbcType="VARCHAR" />
+    <result column="Member_Phone" property="memberPhone" jdbcType="VARCHAR" />
+    <result column="Member_Birthday" property="memberBirthday" jdbcType="DATE" />
+    <result column="Member_Status" property="memberStatus" jdbcType="INTEGER" />
+    <result column="Member_TotalScore" property="memberTotalscore" jdbcType="INTEGER" />
+    <result column="Member_LeaveScore" property="memberLeavescore" jdbcType="INTEGER" />
+    <result column="Member_TotalMoney" property="memberTotalmoney" jdbcType="DOUBLE" />
+    <result column="Member_LeaveMoney" property="memberLeavemoney" jdbcType="DOUBLE" />
+    <result column="Member_CardBalance" property="memberCardbalance" jdbcType="DOUBLE" />
+    <result column="Member_Email" property="memberEmail" jdbcType="VARCHAR" />
+    <result column="Member_Adress" property="memberAdress" jdbcType="VARCHAR" />
+    <result column="Level_Id" property="levelId" jdbcType="INTEGER" />
+    <result column="Shop_Id" property="shopId" jdbcType="INTEGER" />
+    <result column="Member_CardDate" property="memberCarddate" jdbcType="TIMESTAMP" />
+    <result column="Member_OutCardDate" property="memberOutcarddate" jdbcType="TIMESTAMP" />
+    <result column="Member_Age" property="memberAge" jdbcType="INTEGER" />
+    <result column="Member_Height" property="memberHeight" jdbcType="DOUBLE" />
+    <result column="Member_Width" property="memberWidth" jdbcType="DOUBLE" />
+    <result column="Member_Style" property="memberStyle" jdbcType="VARCHAR" />
+    <result column="Member_Introductor" property="memberIntroductor" jdbcType="VARCHAR" />
+    <result column="Member_Interest" property="memberInterest" jdbcType="VARCHAR" />
+    <result column="Operation" property="operation" jdbcType="VARCHAR" />
+    <result column="Operation_Date" property="operationDate" jdbcType="TIMESTAMP" />
+    <result column="Operation_Ip" property="operationIp" jdbcType="VARCHAR" />
+    <result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Member_Id, Member_CardNum, Member_Name, Member_Gender, Member_IdNum, Member_Phone, 
+    Member_Birthday, Member_Status, Member_TotalScore, Member_LeaveScore, Member_TotalMoney, 
+    Member_LeaveMoney, Member_CardBalance, Member_Email, Member_Adress, Level_Id, Shop_Id, 
+    Member_CardDate, Member_OutCardDate, Member_Age, Member_Height, Member_Width, Member_Style, 
+    Member_Introductor, Member_Interest, Operation, Operation_Date, Operation_Ip, Remarks
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_member_info
+    where Member_Id = #{memberId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_member_info
+    where Member_Id = #{memberId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zs.model.Member" >
+    insert into tbl_member_info (Member_Id, Member_CardNum, Member_Name, 
+      Member_Gender, Member_IdNum, Member_Phone, 
+      Member_Birthday, Member_Status, Member_TotalScore, 
+      Member_LeaveScore, Member_TotalMoney, Member_LeaveMoney, 
+      Member_CardBalance, Member_Email, Member_Adress, 
+      Level_Id, Shop_Id, Member_CardDate, 
+      Member_OutCardDate, Member_Age, Member_Height, 
+      Member_Width, Member_Style, Member_Introductor, 
+      Member_Interest, Operation, Operation_Date, 
+      Operation_Ip, Remarks)
+    values (#{memberId,jdbcType=INTEGER}, #{memberCardnum,jdbcType=VARCHAR}, #{memberName,jdbcType=VARCHAR}, 
+      #{memberGender,jdbcType=INTEGER}, #{memberIdnum,jdbcType=VARCHAR}, #{memberPhone,jdbcType=VARCHAR}, 
+      #{memberBirthday,jdbcType=DATE}, #{memberStatus,jdbcType=INTEGER}, #{memberTotalscore,jdbcType=INTEGER}, 
+      #{memberLeavescore,jdbcType=INTEGER}, #{memberTotalmoney,jdbcType=DOUBLE}, #{memberLeavemoney,jdbcType=DOUBLE}, 
+      #{memberCardbalance,jdbcType=DOUBLE}, #{memberEmail,jdbcType=VARCHAR}, #{memberAdress,jdbcType=VARCHAR}, 
+      #{levelId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{memberCarddate,jdbcType=TIMESTAMP}, 
+      #{memberOutcarddate,jdbcType=TIMESTAMP}, #{memberAge,jdbcType=INTEGER}, #{memberHeight,jdbcType=DOUBLE}, 
+      #{memberWidth,jdbcType=DOUBLE}, #{memberStyle,jdbcType=VARCHAR}, #{memberIntroductor,jdbcType=VARCHAR}, 
+      #{memberInterest,jdbcType=VARCHAR}, #{operation,jdbcType=VARCHAR}, #{operationDate,jdbcType=TIMESTAMP}, 
+      #{operationIp,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zs.model.Member" >
+    insert into tbl_member_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="memberId != null" >
+        Member_Id,
+      </if>
+      <if test="memberCardnum != null" >
+        Member_CardNum,
+      </if>
+      <if test="memberName != null" >
+        Member_Name,
+      </if>
+      <if test="memberGender != null" >
+        Member_Gender,
+      </if>
+      <if test="memberIdnum != null" >
+        Member_IdNum,
+      </if>
+      <if test="memberPhone != null" >
+        Member_Phone,
+      </if>
+      <if test="memberBirthday != null" >
+        Member_Birthday,
+      </if>
+      <if test="memberStatus != null" >
+        Member_Status,
+      </if>
+      <if test="memberTotalscore != null" >
+        Member_TotalScore,
+      </if>
+      <if test="memberLeavescore != null" >
+        Member_LeaveScore,
+      </if>
+      <if test="memberTotalmoney != null" >
+        Member_TotalMoney,
+      </if>
+      <if test="memberLeavemoney != null" >
+        Member_LeaveMoney,
+      </if>
+      <if test="memberCardbalance != null" >
+        Member_CardBalance,
+      </if>
+      <if test="memberEmail != null" >
+        Member_Email,
+      </if>
+      <if test="memberAdress != null" >
+        Member_Adress,
+      </if>
+      <if test="levelId != null" >
+        Level_Id,
+      </if>
+      <if test="shopId != null" >
+        Shop_Id,
+      </if>
+      <if test="memberCarddate != null" >
+        Member_CardDate,
+      </if>
+      <if test="memberOutcarddate != null" >
+        Member_OutCardDate,
+      </if>
+      <if test="memberAge != null" >
+        Member_Age,
+      </if>
+      <if test="memberHeight != null" >
+        Member_Height,
+      </if>
+      <if test="memberWidth != null" >
+        Member_Width,
+      </if>
+      <if test="memberStyle != null" >
+        Member_Style,
+      </if>
+      <if test="memberIntroductor != null" >
+        Member_Introductor,
+      </if>
+      <if test="memberInterest != null" >
+        Member_Interest,
+      </if>
+      <if test="operation != null" >
+        Operation,
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date,
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="memberCardnum != null" >
+        #{memberCardnum,jdbcType=VARCHAR},
+      </if>
+      <if test="memberName != null" >
+        #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="memberGender != null" >
+        #{memberGender,jdbcType=INTEGER},
+      </if>
+      <if test="memberIdnum != null" >
+        #{memberIdnum,jdbcType=VARCHAR},
+      </if>
+      <if test="memberPhone != null" >
+        #{memberPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="memberBirthday != null" >
+        #{memberBirthday,jdbcType=DATE},
+      </if>
+      <if test="memberStatus != null" >
+        #{memberStatus,jdbcType=INTEGER},
+      </if>
+      <if test="memberTotalscore != null" >
+        #{memberTotalscore,jdbcType=INTEGER},
+      </if>
+      <if test="memberLeavescore != null" >
+        #{memberLeavescore,jdbcType=INTEGER},
+      </if>
+      <if test="memberTotalmoney != null" >
+        #{memberTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="memberLeavemoney != null" >
+        #{memberLeavemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="memberCardbalance != null" >
+        #{memberCardbalance,jdbcType=DOUBLE},
+      </if>
+      <if test="memberEmail != null" >
+        #{memberEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="memberAdress != null" >
+        #{memberAdress,jdbcType=VARCHAR},
+      </if>
+      <if test="levelId != null" >
+        #{levelId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="memberCarddate != null" >
+        #{memberCarddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memberOutcarddate != null" >
+        #{memberOutcarddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memberAge != null" >
+        #{memberAge,jdbcType=INTEGER},
+      </if>
+      <if test="memberHeight != null" >
+        #{memberHeight,jdbcType=DOUBLE},
+      </if>
+      <if test="memberWidth != null" >
+        #{memberWidth,jdbcType=DOUBLE},
+      </if>
+      <if test="memberStyle != null" >
+        #{memberStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="memberIntroductor != null" >
+        #{memberIntroductor,jdbcType=VARCHAR},
+      </if>
+      <if test="memberInterest != null" >
+        #{memberInterest,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        #{operationIp,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zs.model.Member" >
+    update tbl_member_info
+    <set >
+      <if test="memberCardnum != null" >
+        Member_CardNum = #{memberCardnum,jdbcType=VARCHAR},
+      </if>
+      <if test="memberName != null" >
+        Member_Name = #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="memberGender != null" >
+        Member_Gender = #{memberGender,jdbcType=INTEGER},
+      </if>
+      <if test="memberIdnum != null" >
+        Member_IdNum = #{memberIdnum,jdbcType=VARCHAR},
+      </if>
+      <if test="memberPhone != null" >
+        Member_Phone = #{memberPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="memberBirthday != null" >
+        Member_Birthday = #{memberBirthday,jdbcType=DATE},
+      </if>
+      <if test="memberStatus != null" >
+        Member_Status = #{memberStatus,jdbcType=INTEGER},
+      </if>
+      <if test="memberTotalscore != null" >
+        Member_TotalScore = #{memberTotalscore,jdbcType=INTEGER},
+      </if>
+      <if test="memberLeavescore != null" >
+        Member_LeaveScore = #{memberLeavescore,jdbcType=INTEGER},
+      </if>
+      <if test="memberTotalmoney != null" >
+        Member_TotalMoney = #{memberTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="memberLeavemoney != null" >
+        Member_LeaveMoney = #{memberLeavemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="memberCardbalance != null" >
+        Member_CardBalance = #{memberCardbalance,jdbcType=DOUBLE},
+      </if>
+      <if test="memberEmail != null" >
+        Member_Email = #{memberEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="memberAdress != null" >
+        Member_Adress = #{memberAdress,jdbcType=VARCHAR},
+      </if>
+      <if test="levelId != null" >
+        Level_Id = #{levelId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        Shop_Id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="memberCarddate != null" >
+        Member_CardDate = #{memberCarddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memberOutcarddate != null" >
+        Member_OutCardDate = #{memberOutcarddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memberAge != null" >
+        Member_Age = #{memberAge,jdbcType=INTEGER},
+      </if>
+      <if test="memberHeight != null" >
+        Member_Height = #{memberHeight,jdbcType=DOUBLE},
+      </if>
+      <if test="memberWidth != null" >
+        Member_Width = #{memberWidth,jdbcType=DOUBLE},
+      </if>
+      <if test="memberStyle != null" >
+        Member_Style = #{memberStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="memberIntroductor != null" >
+        Member_Introductor = #{memberIntroductor,jdbcType=VARCHAR},
+      </if>
+      <if test="memberInterest != null" >
+        Member_Interest = #{memberInterest,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        Operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip = #{operationIp,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Member_Id = #{memberId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zs.model.Member" >
+    update tbl_member_info
+    set Member_CardNum = #{memberCardnum,jdbcType=VARCHAR},
+      Member_Name = #{memberName,jdbcType=VARCHAR},
+      Member_Gender = #{memberGender,jdbcType=INTEGER},
+      Member_IdNum = #{memberIdnum,jdbcType=VARCHAR},
+      Member_Phone = #{memberPhone,jdbcType=VARCHAR},
+      Member_Birthday = #{memberBirthday,jdbcType=DATE},
+      Member_Status = #{memberStatus,jdbcType=INTEGER},
+      Member_TotalScore = #{memberTotalscore,jdbcType=INTEGER},
+      Member_LeaveScore = #{memberLeavescore,jdbcType=INTEGER},
+      Member_TotalMoney = #{memberTotalmoney,jdbcType=DOUBLE},
+      Member_LeaveMoney = #{memberLeavemoney,jdbcType=DOUBLE},
+      Member_CardBalance = #{memberCardbalance,jdbcType=DOUBLE},
+      Member_Email = #{memberEmail,jdbcType=VARCHAR},
+      Member_Adress = #{memberAdress,jdbcType=VARCHAR},
+      Level_Id = #{levelId,jdbcType=INTEGER},
+      Shop_Id = #{shopId,jdbcType=INTEGER},
+      Member_CardDate = #{memberCarddate,jdbcType=TIMESTAMP},
+      Member_OutCardDate = #{memberOutcarddate,jdbcType=TIMESTAMP},
+      Member_Age = #{memberAge,jdbcType=INTEGER},
+      Member_Height = #{memberHeight,jdbcType=DOUBLE},
+      Member_Width = #{memberWidth,jdbcType=DOUBLE},
+      Member_Style = #{memberStyle,jdbcType=VARCHAR},
+      Member_Introductor = #{memberIntroductor,jdbcType=VARCHAR},
+      Member_Interest = #{memberInterest,jdbcType=VARCHAR},
+      Operation = #{operation,jdbcType=VARCHAR},
+      Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      Operation_Ip = #{operationIp,jdbcType=VARCHAR},
+      Remarks = #{remarks,jdbcType=VARCHAR}
+    where Member_Id = #{memberId,jdbcType=INTEGER}
+  </update>
+</mapper>

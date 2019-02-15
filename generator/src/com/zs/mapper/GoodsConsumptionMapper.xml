@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zs.dao.GoodsConsumptionMapper" >
+  <resultMap id="BaseResultMap" type="com.zs.model.GoodsConsumption" >
+    <id column="Record_Id" property="recordId" jdbcType="INTEGER" />
+    <result column="Member_Id" property="memberId" jdbcType="INTEGER" />
+    <result column="Employee_Id" property="employeeId" jdbcType="VARCHAR" />
+    <result column="Shop_Id" property="shopId" jdbcType="INTEGER" />
+    <result column="Consumption_Date" property="consumptionDate" jdbcType="TIMESTAMP" />
+    <result column="Consumption_TotalMoney" property="consumptionTotalmoney" jdbcType="DOUBLE" />
+    <result column="Consumption_CardBalance" property="consumptionCardbalance" jdbcType="DOUBLE" />
+    <result column="Consumption_BankCard" property="consumptionBankcard" jdbcType="DOUBLE" />
+    <result column="Consumption_WeChat" property="consumptionWechat" jdbcType="DOUBLE" />
+    <result column="Consumption_Alipay" property="consumptionAlipay" jdbcType="DOUBLE" />
+    <result column="Member_TotalScore" property="memberTotalscore" jdbcType="INTEGER" />
+    <result column="Employee_TotalBonus" property="employeeTotalbonus" jdbcType="DOUBLE" />
+    <result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="Operation" property="operation" jdbcType="VARCHAR" />
+    <result column="Operation_Date" property="operationDate" jdbcType="TIMESTAMP" />
+    <result column="Operation_Ip" property="operationIp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Record_Id, Member_Id, Employee_Id, Shop_Id, Consumption_Date, Consumption_TotalMoney, 
+    Consumption_CardBalance, Consumption_BankCard, Consumption_WeChat, Consumption_Alipay, 
+    Member_TotalScore, Employee_TotalBonus, Remarks, Operation, Operation_Date, Operation_Ip
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_goodsconsumption_info
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_goodsconsumption_info
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zs.model.GoodsConsumption" >
+    insert into tbl_goodsconsumption_info (Record_Id, Member_Id, Employee_Id, 
+      Shop_Id, Consumption_Date, Consumption_TotalMoney, 
+      Consumption_CardBalance, Consumption_BankCard, 
+      Consumption_WeChat, Consumption_Alipay, Member_TotalScore, 
+      Employee_TotalBonus, Remarks, Operation, 
+      Operation_Date, Operation_Ip)
+    values (#{recordId,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{employeeId,jdbcType=VARCHAR}, 
+      #{shopId,jdbcType=INTEGER}, #{consumptionDate,jdbcType=TIMESTAMP}, #{consumptionTotalmoney,jdbcType=DOUBLE}, 
+      #{consumptionCardbalance,jdbcType=DOUBLE}, #{consumptionBankcard,jdbcType=DOUBLE}, 
+      #{consumptionWechat,jdbcType=DOUBLE}, #{consumptionAlipay,jdbcType=DOUBLE}, #{memberTotalscore,jdbcType=INTEGER}, 
+      #{employeeTotalbonus,jdbcType=DOUBLE}, #{remarks,jdbcType=VARCHAR}, #{operation,jdbcType=VARCHAR}, 
+      #{operationDate,jdbcType=TIMESTAMP}, #{operationIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zs.model.GoodsConsumption" >
+    insert into tbl_goodsconsumption_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        Record_Id,
+      </if>
+      <if test="memberId != null" >
+        Member_Id,
+      </if>
+      <if test="employeeId != null" >
+        Employee_Id,
+      </if>
+      <if test="shopId != null" >
+        Shop_Id,
+      </if>
+      <if test="consumptionDate != null" >
+        Consumption_Date,
+      </if>
+      <if test="consumptionTotalmoney != null" >
+        Consumption_TotalMoney,
+      </if>
+      <if test="consumptionCardbalance != null" >
+        Consumption_CardBalance,
+      </if>
+      <if test="consumptionBankcard != null" >
+        Consumption_BankCard,
+      </if>
+      <if test="consumptionWechat != null" >
+        Consumption_WeChat,
+      </if>
+      <if test="consumptionAlipay != null" >
+        Consumption_Alipay,
+      </if>
+      <if test="memberTotalscore != null" >
+        Member_TotalScore,
+      </if>
+      <if test="employeeTotalbonus != null" >
+        Employee_TotalBonus,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+      <if test="operation != null" >
+        Operation,
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date,
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        #{recordId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="employeeId != null" >
+        #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="consumptionDate != null" >
+        #{consumptionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="consumptionTotalmoney != null" >
+        #{consumptionTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="consumptionCardbalance != null" >
+        #{consumptionCardbalance,jdbcType=DOUBLE},
+      </if>
+      <if test="consumptionBankcard != null" >
+        #{consumptionBankcard,jdbcType=DOUBLE},
+      </if>
+      <if test="consumptionWechat != null" >
+        #{consumptionWechat,jdbcType=DOUBLE},
+      </if>
+      <if test="consumptionAlipay != null" >
+        #{consumptionAlipay,jdbcType=DOUBLE},
+      </if>
+      <if test="memberTotalscore != null" >
+        #{memberTotalscore,jdbcType=INTEGER},
+      </if>
+      <if test="employeeTotalbonus != null" >
+        #{employeeTotalbonus,jdbcType=DOUBLE},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zs.model.GoodsConsumption" >
+    update tbl_goodsconsumption_info
+    <set >
+      <if test="memberId != null" >
+        Member_Id = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="employeeId != null" >
+        Employee_Id = #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        Shop_Id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="consumptionDate != null" >
+        Consumption_Date = #{consumptionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="consumptionTotalmoney != null" >
+        Consumption_TotalMoney = #{consumptionTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="consumptionCardbalance != null" >
+        Consumption_CardBalance = #{consumptionCardbalance,jdbcType=DOUBLE},
+      </if>
+      <if test="consumptionBankcard != null" >
+        Consumption_BankCard = #{consumptionBankcard,jdbcType=DOUBLE},
+      </if>
+      <if test="consumptionWechat != null" >
+        Consumption_WeChat = #{consumptionWechat,jdbcType=DOUBLE},
+      </if>
+      <if test="consumptionAlipay != null" >
+        Consumption_Alipay = #{consumptionAlipay,jdbcType=DOUBLE},
+      </if>
+      <if test="memberTotalscore != null" >
+        Member_TotalScore = #{memberTotalscore,jdbcType=INTEGER},
+      </if>
+      <if test="employeeTotalbonus != null" >
+        Employee_TotalBonus = #{employeeTotalbonus,jdbcType=DOUBLE},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        Operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip = #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zs.model.GoodsConsumption" >
+    update tbl_goodsconsumption_info
+    set Member_Id = #{memberId,jdbcType=INTEGER},
+      Employee_Id = #{employeeId,jdbcType=VARCHAR},
+      Shop_Id = #{shopId,jdbcType=INTEGER},
+      Consumption_Date = #{consumptionDate,jdbcType=TIMESTAMP},
+      Consumption_TotalMoney = #{consumptionTotalmoney,jdbcType=DOUBLE},
+      Consumption_CardBalance = #{consumptionCardbalance,jdbcType=DOUBLE},
+      Consumption_BankCard = #{consumptionBankcard,jdbcType=DOUBLE},
+      Consumption_WeChat = #{consumptionWechat,jdbcType=DOUBLE},
+      Consumption_Alipay = #{consumptionAlipay,jdbcType=DOUBLE},
+      Member_TotalScore = #{memberTotalscore,jdbcType=INTEGER},
+      Employee_TotalBonus = #{employeeTotalbonus,jdbcType=DOUBLE},
+      Remarks = #{remarks,jdbcType=VARCHAR},
+      Operation = #{operation,jdbcType=VARCHAR},
+      Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      Operation_Ip = #{operationIp,jdbcType=VARCHAR}
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </update>
+</mapper>

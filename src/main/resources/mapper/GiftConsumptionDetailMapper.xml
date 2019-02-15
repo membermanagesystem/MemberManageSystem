@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zs.dao.GiftConsumptionDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.zs.model.GiftConsumptionDetail" >
+    <id column="Record_Id" property="recordId" jdbcType="INTEGER" />
+    <result column="Member_Id" property="memberId" jdbcType="INTEGER" />
+    <result column="Employee_Id" property="employeeId" jdbcType="INTEGER" />
+    <result column="Shop_Id" property="shopId" jdbcType="INTEGER" />
+    <result column="Gift_Id" property="giftId" jdbcType="INTEGER" />
+    <result column="Gift_Number" property="giftNumber" jdbcType="INTEGER" />
+    <result column="Gift_UnitPrice" property="giftUnitprice" jdbcType="DOUBLE" />
+    <result column="Gift_TobalMoney" property="giftTobalmoney" jdbcType="DOUBLE" />
+    <result column="Gift_Score" property="giftScore" jdbcType="DOUBLE" />
+    <result column="Gift_ConsumptionDate" property="giftConsumptiondate" jdbcType="TIMESTAMP" />
+    <result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="Operation" property="operation" jdbcType="VARCHAR" />
+    <result column="Operation_Date" property="operationDate" jdbcType="TIMESTAMP" />
+    <result column="Operation_Ip" property="operationIp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Record_Id, Member_Id, Employee_Id, Shop_Id, Gift_Id, Gift_Number, Gift_UnitPrice, 
+    Gift_TobalMoney, Gift_Score, Gift_ConsumptionDate, Remarks, Operation, Operation_Date, 
+    Operation_Ip
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_giftconsumptiondetail_info
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_giftconsumptiondetail_info
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zs.model.GiftConsumptionDetail" >
+    insert into tbl_giftconsumptiondetail_info (Record_Id, Member_Id, Employee_Id, 
+      Shop_Id, Gift_Id, Gift_Number, 
+      Gift_UnitPrice, Gift_TobalMoney, Gift_Score, 
+      Gift_ConsumptionDate, Remarks, Operation, 
+      Operation_Date, Operation_Ip)
+    values (#{recordId,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{employeeId,jdbcType=INTEGER}, 
+      #{shopId,jdbcType=INTEGER}, #{giftId,jdbcType=INTEGER}, #{giftNumber,jdbcType=INTEGER}, 
+      #{giftUnitprice,jdbcType=DOUBLE}, #{giftTobalmoney,jdbcType=DOUBLE}, #{giftScore,jdbcType=DOUBLE}, 
+      #{giftConsumptiondate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{operation,jdbcType=VARCHAR}, 
+      #{operationDate,jdbcType=TIMESTAMP}, #{operationIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zs.model.GiftConsumptionDetail" >
+    insert into tbl_giftconsumptiondetail_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        Record_Id,
+      </if>
+      <if test="memberId != null" >
+        Member_Id,
+      </if>
+      <if test="employeeId != null" >
+        Employee_Id,
+      </if>
+      <if test="shopId != null" >
+        Shop_Id,
+      </if>
+      <if test="giftId != null" >
+        Gift_Id,
+      </if>
+      <if test="giftNumber != null" >
+        Gift_Number,
+      </if>
+      <if test="giftUnitprice != null" >
+        Gift_UnitPrice,
+      </if>
+      <if test="giftTobalmoney != null" >
+        Gift_TobalMoney,
+      </if>
+      <if test="giftScore != null" >
+        Gift_Score,
+      </if>
+      <if test="giftConsumptiondate != null" >
+        Gift_ConsumptionDate,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+      <if test="operation != null" >
+        Operation,
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date,
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        #{recordId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="employeeId != null" >
+        #{employeeId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="giftId != null" >
+        #{giftId,jdbcType=INTEGER},
+      </if>
+      <if test="giftNumber != null" >
+        #{giftNumber,jdbcType=INTEGER},
+      </if>
+      <if test="giftUnitprice != null" >
+        #{giftUnitprice,jdbcType=DOUBLE},
+      </if>
+      <if test="giftTobalmoney != null" >
+        #{giftTobalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="giftScore != null" >
+        #{giftScore,jdbcType=DOUBLE},
+      </if>
+      <if test="giftConsumptiondate != null" >
+        #{giftConsumptiondate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zs.model.GiftConsumptionDetail" >
+    update tbl_giftconsumptiondetail_info
+    <set >
+      <if test="memberId != null" >
+        Member_Id = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="employeeId != null" >
+        Employee_Id = #{employeeId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        Shop_Id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="giftId != null" >
+        Gift_Id = #{giftId,jdbcType=INTEGER},
+      </if>
+      <if test="giftNumber != null" >
+        Gift_Number = #{giftNumber,jdbcType=INTEGER},
+      </if>
+      <if test="giftUnitprice != null" >
+        Gift_UnitPrice = #{giftUnitprice,jdbcType=DOUBLE},
+      </if>
+      <if test="giftTobalmoney != null" >
+        Gift_TobalMoney = #{giftTobalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="giftScore != null" >
+        Gift_Score = #{giftScore,jdbcType=DOUBLE},
+      </if>
+      <if test="giftConsumptiondate != null" >
+        Gift_ConsumptionDate = #{giftConsumptiondate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        Operation = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDate != null" >
+        Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationIp != null" >
+        Operation_Ip = #{operationIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zs.model.GiftConsumptionDetail" >
+    update tbl_giftconsumptiondetail_info
+    set Member_Id = #{memberId,jdbcType=INTEGER},
+      Employee_Id = #{employeeId,jdbcType=INTEGER},
+      Shop_Id = #{shopId,jdbcType=INTEGER},
+      Gift_Id = #{giftId,jdbcType=INTEGER},
+      Gift_Number = #{giftNumber,jdbcType=INTEGER},
+      Gift_UnitPrice = #{giftUnitprice,jdbcType=DOUBLE},
+      Gift_TobalMoney = #{giftTobalmoney,jdbcType=DOUBLE},
+      Gift_Score = #{giftScore,jdbcType=DOUBLE},
+      Gift_ConsumptionDate = #{giftConsumptiondate,jdbcType=TIMESTAMP},
+      Remarks = #{remarks,jdbcType=VARCHAR},
+      Operation = #{operation,jdbcType=VARCHAR},
+      Operation_Date = #{operationDate,jdbcType=TIMESTAMP},
+      Operation_Ip = #{operationIp,jdbcType=VARCHAR}
+    where Record_Id = #{recordId,jdbcType=INTEGER}
+  </update>
+</mapper>
